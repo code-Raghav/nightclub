@@ -1,17 +1,17 @@
 import Head from "next/head";
-import { auth } from "../../firebaseConfig";
+import { auth, db } from "../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { getAuth, updatePhoneNumber, updateProfile } from "firebase/auth";
-import { Alert } from "next/app";
-import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
-import { CgSpinner } from "react-icons/cg";
+import { getAuth, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Profile() {
+  //required for name change
   const auth = getAuth();
   const [user, setUser] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
 
+  //For updating the user name(WORKS)
   const updateName = (data) => {
     console.log(data);
 
@@ -19,7 +19,7 @@ export default function Profile() {
       displayName: data.name,
     })
       .then(() => {
-        <Alert>Hi</Alert>;
+        console.log("User name Updated!");
       })
       .catch((error) => {
         // An error occurred
@@ -27,16 +27,12 @@ export default function Profile() {
       });
   };
   const updatePhone = (data) => {
-    console.log(parseInt(data.phone));
-
-    updateProfile(auth.currentUser, {
-      displayName: data.name,
-    })
-      .then(() => {})
-      .catch((error) => {
-        // An error occurred
-        // ...
-      });
+    setDoc(doc(db, "users", user.email), {
+      name: user && user.displayName ? user.displayName : "NoName",
+      emailID: user && user.email ? user.email : "NoEmail",
+      phoneNumber: "+91" + data.phone,
+    });
+    console.log("Added to database!");
   };
 
   return (
@@ -73,7 +69,6 @@ export default function Profile() {
 
           <button>Submit</button>
         </form>
-        <div className="recaptcha-container"></div>
       </main>
     </>
   );

@@ -1,10 +1,12 @@
-import { auth } from "../../firebaseConfig";
+import { auth, db } from "../../firebaseConfig";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useEffect } from "react";
 import { distDir } from "next.config";
 import Link from "next/link";
 import Head from "next/head";
+import Router from "next/router";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function Members() {
   const [user, setUser] = useAuthState(auth);
@@ -12,9 +14,24 @@ export default function Members() {
   const login = async () => {
     const result = await signInWithPopup(auth, googleAuth);
   };
+
+  const phoneRetireve = async () => {
+    if (user) {
+      const docRef = doc(db, "users", user.email);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.data().phoneNumber) {
+        Router.replace("/Profile");
+      } else {
+        console.log("Phone number exists: " + docSnap.data().phoneNumber);
+      }
+    }
+  };
+
   useEffect(() => {
-    console.log(user);
+    phoneRetireve();
   }, [user]);
+  if (user && !user) {
+  }
 
   return (
     <>
