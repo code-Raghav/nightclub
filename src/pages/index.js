@@ -14,7 +14,7 @@ export default function Home() {
       </Head>
       <Navbar className=" sticky" />
       <Hero
-        heading="Captur Photography"
+        heading="thename NightClub"
         message="I capture moments in nature and keep them alive"
       />
     </>
