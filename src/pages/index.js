@@ -1,4 +1,6 @@
 //imports
+import Hero from "components/Hero";
+import Navbar from "components/NavBar";
 import Head from "next/head";
 
 export default function Home() {
@@ -10,9 +12,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div>Hi</div>
-      </main>
+      <Navbar className=" sticky" />
+      <Hero
+        heading="Captur Photography"
+        message="I capture moments in nature and keep them alive"
+      />
     </>
   );
 }
