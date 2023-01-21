@@ -7,15 +7,18 @@ import Link from "next/link";
 import Head from "next/head";
 import Router from "next/router";
 import { doc, getDoc } from "firebase/firestore";
+import { useEffect } from "react";
 
 export default function Members() {
   const [user, setUser] = useAuthState(auth);
+
   const googleAuth = new GoogleAuthProvider();
+
   const login = async () => {
     const result = await signInWithPopup(auth, googleAuth);
   };
 
-  const phoneRetireve = async () => {
+  const phoneRetrieve = async () => {
     if (user) {
       const docRef = doc(db, "users", user.email);
       const docSnap = await getDoc(docRef);
@@ -28,10 +31,8 @@ export default function Members() {
   };
 
   useEffect(() => {
-    phoneRetireve();
+    phoneRetrieve();
   }, [user]);
-  if (user && !user) {
-  }
 
   return (
     <>

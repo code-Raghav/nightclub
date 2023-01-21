@@ -3,13 +3,15 @@ import { auth, db } from "../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
 export default function Profile() {
   //required for name change
   const auth = getAuth();
   const [user, setUser] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
+  const [phone, setPhone] = useState("");
 
   //For updating the user name(WORKS)
   const updateName = (data) => {
@@ -34,6 +36,22 @@ export default function Profile() {
     });
     console.log("Added to database!");
   };
+  //Retrieve phone number
+  const phoneRetrieve = async () => {
+    if (user) {
+      const docRef = doc(db, "users", user.email);
+      const docSnap = await getDoc(docRef);
+      if (!docSnap.data().phoneNumber) {
+        Router.replace("/Profile");
+      } else {
+        console.log("Phone number exists: " + docSnap.data().phoneNumber);
+        setPhone(docSnap.data().phoneNumber.slice(3));
+      }
+    }
+  };
+  useEffect(() => {
+    phoneRetrieve();
+  }, [user]);
 
   return (
     <>
@@ -63,8 +81,12 @@ export default function Profile() {
           <label htmlFor="phone">Phone Number</label>
           <input
             type="phone"
-            defaultValue={user && user.phoneNumber ? user.phoneNumber : ""}
-            {...register("phone", { required: true })}
+            defaultValue={user && phone ? phone : ""}
+            {...register("phone", {
+              required: true,
+              minLength: 10,
+              maxLength: 10,
+            })}
           />
 
           <button>Submit</button>
