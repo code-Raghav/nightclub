@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import Router from "next/router";
 
 export default function Profile() {
   //required for name change
@@ -12,11 +13,13 @@ export default function Profile() {
   const [user, setUser] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
 
-  //For updating the user name(WORKS)
-  const updateName = (data) => {
-    console.log(data);
+  //For Sending To database
+  const updateDatabase = (data) => {
+    setName(data.name);
 
+    //Update name on auth side
     updateProfile(auth.currentUser, {
       displayName: data.name,
     })
@@ -27,17 +30,20 @@ export default function Profile() {
         // An error occurred
         // ...
       });
-  };
-  const updatePhone = (data) => {
+    console.log(data.name);
+
+    //Update Name and Phone on database side
     setDoc(doc(db, "users", user.email), {
-      name: user && user.displayName ? user.displayName : "NoName",
+      name: data.name,
       emailID: user && user.email ? user.email : "NoEmail",
       phoneNumber: "+91" + data.phone,
     });
+
     console.log("Added to database!");
   };
-  //Retrieve phone number
-  const phoneRetrieve = async () => {
+
+  //Retrieves from database
+  const readDatabase = async () => {
     if (user) {
       const docRef = doc(db, "users", user.email);
       const docSnap = await getDoc(docRef);
@@ -45,12 +51,16 @@ export default function Profile() {
         Router.replace("/Profile");
       } else {
         console.log("Phone number exists: " + docSnap.data().phoneNumber);
+        setName(docSnap.data().name);
         setPhone(docSnap.data().phoneNumber.slice(3));
       }
     }
   };
   useEffect(() => {
-    phoneRetrieve();
+    readDatabase();
+    if (!user) {
+      Router.replace("/members");
+    }
   }, [user]);
 
   return (
@@ -63,21 +73,18 @@ export default function Profile() {
       </Head>
       <main>
         <div>
-          <div>Name: {user ? user.displayName : ""}</div>
+          <div>Name: {user ? name : ""}</div>
           <div>Email: {user ? user.email : ""}</div>
         </div>
 
-        <form onSubmit={handleSubmit(updateName)}>
+        <form onSubmit={handleSubmit(updateDatabase)}>
           <label htmlFor="name">Name</label>
           <input
             type="name"
-            defaultValue={user ? user.displayName : ""}
+            defaultValue={user ? name : ""}
             {...register("name", { required: true })}
           />
-
-          <button>Submit</button>
-        </form>
-        <form onSubmit={handleSubmit(updatePhone)}>
+          <div className="m-10"></div>
           <label htmlFor="phone">Phone Number</label>
           <input
             type="phone"
@@ -89,8 +96,11 @@ export default function Profile() {
             })}
           />
 
-          <button>Submit</button>
+          <button>Update DB</button>
         </form>
+        <div>
+          {user && <button onClick={() => auth.signOut()}>Signout</button>}
+        </div>
       </main>
     </>
   );

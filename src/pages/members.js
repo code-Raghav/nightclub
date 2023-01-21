@@ -7,7 +7,6 @@ import Link from "next/link";
 import Head from "next/head";
 import Router from "next/router";
 import { doc, getDoc } from "firebase/firestore";
-import { useEffect } from "react";
 
 export default function Members() {
   const [user, setUser] = useAuthState(auth);
