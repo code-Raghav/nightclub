@@ -23,7 +23,7 @@ function BlurImage() {
       <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
         <Image
           alt=""
-          src="https://bit.ly/placeholder-img"
+          src="https://firebasestorage.googleapis.com/v0/b/nightclub-f72a2.appspot.com/o/20230104_131907.png?alt=media&token=9332fc8f-1399-4560-81c8-803096c321f2"
           layout="fill"
           objectFit="cover"
           className={cn(
