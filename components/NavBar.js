@@ -4,6 +4,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 import CustomLink from "./CustomLink";
+import Image from "next/image";
 
 const Navbar = () => {
   //standard nav code
@@ -19,9 +20,9 @@ const Navbar = () => {
   useEffect(() => {
     const changeColor = () => {
       if (window.scrollY >= 60) {
-        setColor("#ffffff");
+        setColor("#c4cacb");
         setTextColor("black");
-        setPadding("p-2 sm:pt-0 sm:px-2 ");
+        setPadding("p-2 sm:py-1 sm:px-2 ");
       } else {
         setColor("transparent");
         setTextColor("#ffffff");
@@ -70,13 +71,15 @@ const Navbar = () => {
           smooth={true}
           offset={50}
           duration={500}
+          className=" md:pl-10"
         >
-          <h1
+          {/* <h1
             style={{ color: `${textColor}` }}
             className={`font-bold text-4xl`}
           >
-            Captur
-          </h1>
+            BROOKLYN
+          </h1> */}
+          <Image src={"/Logo/mainLogo.png"} width={100} height={50} />
         </Link>
         <ul style={{ color: `${textColor}` }} className={`hidden sm:flex`}>
           <li className="p-4">
@@ -86,17 +89,19 @@ const Navbar = () => {
               smooth={true}
               offset={0}
               duration={500}
-              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group"
             >
-              Home
+              <span>Home</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
             <Link
-              href="/"
-              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
+              to="/"
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
-              Our Story
+              <span>Our Story</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
@@ -104,32 +109,36 @@ const Navbar = () => {
               activeClass="active"
               to="gallery"
               smooth={true}
-              offset={0}
+              offset={-63}
               duration={500}
-              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
-              Media
+              <span>Media</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
+            </Link>
+          </li>
+          <li className="p-4">
+            <Link
+              to="/"
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+            >
+              <span>Booking</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
             <Link
               href="/"
-              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
-              Booking
+              <span>Contact Us</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
-            <Link
-              href="/"
-              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li className="p-4">
-            <CustomLink className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm">
-              Members
+            <CustomLink className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group ">
+              <span>Members</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </CustomLink>
           </li>
         </ul>

@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { motion } from "framer-motion";
 
 export default function Hero({ heading, message }) {
   return (
@@ -26,17 +26,24 @@ export default function Hero({ heading, message }) {
         >
           <source src="/bgHero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/70 z-[2] flex items-center justify-center md:left-[-20%] md:top-[-10%]">
-          <div className=" p-5 text-white z-[2]  mt-[-10rem]">
+        <motion.div
+          className="absolute inset-0 bg-black/70 z-[2] flex items-center justify-center md:left-[-20%] md:top-[-10%] lg:justify-start lg:left-0 lg:p-28"
+          initial={{ y: 25, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+          }}
+        >
+          <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-10rem]">
+            <p className=" py-5 text-sm sm:text-sm xl:text-xl">{message}</p>
             <h2 className="text-5xl font-bold sm:text-4xl xl:text-5xl">
               {heading}
             </h2>
-            <p className=" py-5 text-xl sm:text-lg xl:text-3xl">{message}</p>
             <button className="px-8 py-2 border xl:text-xl sm:text-sm">
               Book
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
