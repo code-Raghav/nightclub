@@ -1,5 +1,4 @@
 //imports
-import Gallery from "components/Gallery";
 import Hero from "components/Hero";
 import Navbar from "components/NavBar";
 import Head from "next/head";
@@ -18,7 +17,6 @@ export default function Home() {
         heading="thename NightClub"
         message="I capture moments in nature and keep them alive"
       />
-      <Gallery />
     </>
   );
 }
