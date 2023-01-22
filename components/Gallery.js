@@ -1,9 +1,5 @@
 export default function Gallery() {
-  return (
-    <>
-      <div></div>
-    </>
-  );
+  return <section className=" h-screen bg-white" id="gallery"></section>;
 }
 
 function Image() {

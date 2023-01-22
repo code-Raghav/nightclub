@@ -16,7 +16,7 @@ export default function Hero({ heading, message }) {
     // </div>
 
     //For Video as Hero Background
-    <div className="relative">
+    <div className="relative" id="home">
       <div className=" bg-no-repeat h-screen bg-center bg-cover ">
         <video
           autoPlay

@@ -6,6 +6,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import Router from "next/router";
+import NavBarCustom from "components/NavBarCustom";
 
 export default function Profile() {
   //required for name change
@@ -59,7 +60,7 @@ export default function Profile() {
   useEffect(() => {
     readDatabase();
     if (!user) {
-      Router.replace("/members");
+      Router.replace("/Members");
     }
   }, [user]);
 
@@ -72,34 +73,46 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>
-          <div>Name: {user ? name : ""}</div>
-          <div>Email: {user ? user.email : ""}</div>
-        </div>
+        <NavBarCustom back="/Members" />
+        <div className="flex h-screen items-center justify-center text-sm gap-5 ">
+          <div>
+            <div>Name: {user ? name : ""}</div>
+            <div>Email: {user ? user.email : ""}</div>
+          </div>
 
-        <form onSubmit={handleSubmit(updateDatabase)}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="name"
-            defaultValue={user ? name : ""}
-            {...register("name", { required: true })}
-          />
-          <div className="m-10"></div>
-          <label htmlFor="phone">Phone Number</label>
-          <input
-            type="phone"
-            defaultValue={user && phone ? phone : ""}
-            {...register("phone", {
-              required: true,
-              minLength: 10,
-              maxLength: 10,
-            })}
-          />
+          <form onSubmit={handleSubmit(updateDatabase)}>
+            <label htmlFor="name" className="p-0">
+              Name
+            </label>
+            <input
+              type="name"
+              defaultValue={user ? name : ""}
+              {...register("name", { required: true })}
+            />
+            <div className="m-10"></div>
+            <label htmlFor="phone" className="">
+              Phone Number
+            </label>
+            <input
+              type="phone"
+              defaultValue={user && phone ? phone : ""}
+              {...register("phone", {
+                required: true,
+                minLength: 10,
+                maxLength: 10,
+              })}
+            />
 
-          <button>Update DB</button>
-        </form>
-        <div>
-          {user && <button onClick={() => auth.signOut()}>Signout</button>}
+            <button
+              className="p-3 bg-white text-black mt-10 hover:bg-slate-300
+            "
+            >
+              Update DB
+            </button>
+          </form>
+          <div>
+            {user && <button onClick={() => auth.signOut()}>Signout</button>}
+          </div>
         </div>
       </main>
     </>

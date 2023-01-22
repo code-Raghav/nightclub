@@ -1,14 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
-import { Link } from "react-scroll";
-
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-scroll";
+import { motion } from "framer-motion";
+import CustomLink from "./CustomLink";
 
 const Navbar = () => {
   //standard nav code
   const [nav, setNav] = useState(false);
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
+  const [padding, setPadding] = useState("p-4");
 
   const handleNav = () => {
     setNav(!nav);
@@ -16,12 +18,14 @@ const Navbar = () => {
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 90) {
+      if (window.scrollY >= 60) {
         setColor("#ffffff");
-        setTextColor("#000000");
+        setTextColor("black");
+        setPadding("p-2 sm:pt-0 sm:px-2 ");
       } else {
         setColor("transparent");
         setTextColor("#ffffff");
+        setPadding("p-2");
       }
     };
     window.addEventListener("scroll", changeColor);
@@ -48,26 +52,41 @@ const Navbar = () => {
   }, [nav]);
 
   return (
-    <div
+    <motion.div
+      initial={{ y: 25, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        duration: 0.1,
+      }}
       style={{ backgroundColor: `${color}` }}
       className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
     >
-      <div className="max-w-[1240px] m-auto flex justify-between items-center p-4 text-white">
-        <Link href="/">
-          <h1 style={{ color: `${textColor}` }} className="font-bold text-4xl">
+      <div
+        className={`max-w-[1240px] m-auto flex justify-between items-center ${padding} text-white`}
+      >
+        <Link
+          activeClass="active"
+          to="home"
+          smooth={true}
+          offset={50}
+          duration={500}
+        >
+          <h1
+            style={{ color: `${textColor}` }}
+            className={`font-bold text-4xl`}
+          >
             Captur
           </h1>
         </Link>
-        <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
+        <ul style={{ color: `${textColor}` }} className={`hidden sm:flex`}>
           <li className="p-4">
             <Link
-              href="/"
-              activeClass="home"
-              to="story"
+              activeClass="active"
+              to="home"
               smooth={true}
-              offset={50}
+              offset={0}
               duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
             >
               Home
             </Link>
@@ -75,25 +94,19 @@ const Navbar = () => {
           <li className="p-4">
             <Link
               href="/"
-              activeClass="story"
-              to="media"
-              smooth={true}
-              offset={50}
-              duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
             >
               Our Story
             </Link>
           </li>
           <li className="p-4">
             <Link
-              href="/"
-              activeClass="media"
-              to="booking"
+              activeClass="active"
+              to="gallery"
               smooth={true}
-              offset={50}
+              offset={0}
               duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
             >
               Media
             </Link>
@@ -101,12 +114,7 @@ const Navbar = () => {
           <li className="p-4">
             <Link
               href="/"
-              activeClass="booking"
-              to="contact"
-              smooth={true}
-              offset={50}
-              duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
             >
               Booking
             </Link>
@@ -114,28 +122,15 @@ const Navbar = () => {
           <li className="p-4">
             <Link
               href="/"
-              activeClass="contact"
-              to="members"
-              smooth={true}
-              offset={50}
-              duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+              className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm"
             >
               Contact Us
             </Link>
           </li>
           <li className="p-4">
-            <Link
-              href="/"
-              activeClass="members"
-              to="members"
-              smooth={true}
-              offset={50}
-              duration={500}
-              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
-            >
+            <CustomLink className="cursor-pointer font-semibold text-md hover:font-black sm:text-sm">
               Members
-            </Link>
+            </CustomLink>
           </li>
         </ul>
 
@@ -152,51 +147,91 @@ const Navbar = () => {
           ref={ref}
           className={
             nav
-              ? "sm:hidden absolute top-0 left-[25%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
+              ? "sm:hidden absolute top-0 left-[50%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
               : "sm:hidden absolute top-0 left-[100%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
           }
         >
           <ul className="my-14 px-5 border-t-2 border-b-2">
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
+              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
             >
-              <Link href="/">Home</Link>
+              <Link
+                activeClass="active"
+                to="home"
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Home
+              </Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+            >
+              <Link
+                activeClass="active"
+                to="home"
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Our Story
+              </Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+            >
+              <Link
+                activeClass="active"
+                to="gallery"
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Media
+              </Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+            >
+              <Link
+                activeClass="active"
+                to="home"
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Booking
+              </Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+            >
+              <Link
+                activeClass="active"
+                to="home"
+                smooth={true}
+                offset={0}
+                duration={500}
+              >
+                Contact Us
+              </Link>
             </li>
             <li
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
             >
-              <Link href="/#gallery">Our Story</Link>
-            </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
-            >
-              <Link href="/work">Media</Link>
-            </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
-            >
-              <Link href="/contact">Booking</Link>
-            </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
-            >
-              <Link href="/contact">Contact Us</Link>
-            </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
-            >
-              <Link href="/contact">Members</Link>
+              <CustomLink href="/contact">Members</CustomLink>
             </li>
           </ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
