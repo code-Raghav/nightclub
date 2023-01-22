@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-scroll";
+
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const Navbar = () => {
@@ -59,16 +60,82 @@ const Navbar = () => {
         </Link>
         <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
           <li className="p-4">
-            <Link href="/">Home</Link>
+            <Link
+              href="/"
+              activeClass="home"
+              to="story"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Home
+            </Link>
           </li>
           <li className="p-4">
-            <Link href="/#gallery">Gallery</Link>
+            <Link
+              href="/"
+              activeClass="story"
+              to="media"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Our Story
+            </Link>
           </li>
           <li className="p-4">
-            <Link href="/work">Work</Link>
+            <Link
+              href="/"
+              activeClass="media"
+              to="booking"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Media
+            </Link>
           </li>
           <li className="p-4">
-            <Link href="/contact">Contact</Link>
+            <Link
+              href="/"
+              activeClass="booking"
+              to="contact"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Booking
+            </Link>
+          </li>
+          <li className="p-4">
+            <Link
+              href="/"
+              activeClass="contact"
+              to="members"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Contact Us
+            </Link>
+          </li>
+          <li className="p-4">
+            <Link
+              href="/"
+              activeClass="members"
+              to="members"
+              smooth={true}
+              offset={50}
+              duration={500}
+              className="cursor-pointer text-white font-semibold text-md hover:font-black sm:text-sm"
+            >
+              Members
+            </Link>
           </li>
         </ul>
 
@@ -85,11 +152,11 @@ const Navbar = () => {
           ref={ref}
           className={
             nav
-              ? "sm:hidden absolute top-0 left-[50%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
+              ? "sm:hidden absolute top-0 left-[25%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
               : "sm:hidden absolute top-0 left-[100%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
           }
         >
-          <ul className="my-14 px-5 border-t-4">
+          <ul className="my-14 px-5 border-t-2 border-b-2">
             <li
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
@@ -100,19 +167,31 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
             >
-              <Link href="/#gallery">Gallery</Link>
+              <Link href="/#gallery">Our Story</Link>
             </li>
             <li
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
             >
-              <Link href="/work">Work</Link>
+              <Link href="/work">Media</Link>
             </li>
             <li
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
             >
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Booking</Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500"
+            >
+              <Link href="/contact">Contact Us</Link>
+            </li>
+            <li
+              onClick={handleNav}
+              className="p-4 text-1xl font-bold hover:text-gray-500"
+            >
+              <Link href="/contact">Members</Link>
             </li>
           </ul>
         </div>
