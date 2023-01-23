@@ -12,6 +12,7 @@ const Navbar = () => {
   const [color, setColor] = useState("transparent");
   const [textColor, setTextColor] = useState("white");
   const [padding, setPadding] = useState("p-4");
+  const [logo, setLogo] = useState("/Logo/mainLogo.png");
 
   const handleNav = () => {
     setNav(!nav);
@@ -23,10 +24,12 @@ const Navbar = () => {
         setColor("#c4cacb");
         setTextColor("black");
         setPadding("p-2 sm:py-1 sm:px-2 ");
+        setLogo("/Logo/altLogo.png");
       } else {
         setColor("transparent");
         setTextColor("#ffffff");
         setPadding("p-2");
+        setLogo("/Logo/mainLogo.png");
       }
     };
     window.addEventListener("scroll", changeColor);
@@ -79,7 +82,7 @@ const Navbar = () => {
           >
             BROOKLYN
           </h1> */}
-          <Image src={"/Logo/mainLogo.png"} width={100} height={50} />
+          <Image src={logo} width={100} height={50} />
         </Link>
         <ul style={{ color: `${textColor}` }} className={`hidden sm:flex`}>
           <li className="p-4">

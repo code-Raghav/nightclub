@@ -14,7 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar className=" sticky" />
-      <Hero heading="thename NightClub" message="WELCOME TO THE PARTY" />
+      <Hero heading="JOIN THE CLUB" message="WELCOME TO THE PARTY" />
       <Gallery />
     </div>
   );

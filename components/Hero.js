@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 export default function Hero({ heading, message }) {
   return (
@@ -34,14 +35,20 @@ export default function Hero({ heading, message }) {
             duration: 1,
           }}
         >
-          <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-10rem]">
+          <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-5rem]">
             <p className=" py-5 text-sm sm:text-sm xl:text-xl">{message}</p>
-            <h2 className="text-5xl font-bold sm:text-4xl xl:text-5xl">
-              {heading}
-            </h2>
-            <button className="px-8 py-2 border xl:text-xl sm:text-sm">
-              Book
-            </button>
+            <Link
+              activeClass="active"
+              to="home"
+              smooth={true}
+              offset={0}
+              duration={500}
+              className="cursor-pointer"
+            >
+              <h2 className="text-5xl font-bold font-sansSerif sm:text-6xl sm:max-w-xs md:text-7xl md:max-w-sm lg:text-8xl lg:max-w-md hover:scale-110 ">
+                {heading}
+              </h2>
+            </Link>
           </div>
         </motion.div>
       </div>
