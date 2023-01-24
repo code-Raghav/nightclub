@@ -4,7 +4,7 @@ import { GrFacebook, GrInstagram, GrTwitter } from "react-icons/gr";
 
 export default function Footer() {
   return (
-    <div className="min-w-max bg-black p-8 grid grid-rows-2 grid-flow-row  md:mx-32 lg:mx-52 xl:mx-64  2xl:mx-96 lg:grid-cols-2 ">
+    <div className="min-w-max bg-black p-8 grid grid-rows-2 grid-flow-row gap-4 sm:gap-0 md:mx-32 lg:mx-52 xl:mx-64  2xl:mx-96 lg:grid-cols-2 ">
       <div className="grid justify-center">
         <div>
           <h1 className=" font-sansSerif font-bold text-[rgb(255, 255, 255)] text-md lg:text-lg tracking-wide py-2 pb-8">

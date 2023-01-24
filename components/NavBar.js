@@ -75,7 +75,7 @@ const Navbar = () => {
       className="fixed left-0 top-0 w-full z-10 ease-in duration-300"
     >
       <div
-        className={`max-w-[1240px] m-auto flex justify-between items-center ${padding} text-white`}
+        className={`md:px-10 lg:px-20 m-auto flex justify-between items-center ${padding} text-white`}
       >
         <Link
           activeClass="active"
@@ -86,11 +86,11 @@ const Navbar = () => {
           className=" md:pl-10"
         >
           {/* <h1
-            style={{ color: `${textColor}` }}
-            className={`font-bold text-4xl`}
-          >
-            BROOKLYN
-          </h1> */}
+    style={{ color: `${textColor}` }}
+    className={`font-bold text-4xl`}
+  >
+    BROOKLYN
+  </h1> */}
           <Image
             src={logo}
             width={100}
@@ -154,16 +154,16 @@ const Navbar = () => {
           </li>
           <li className="p-2 pt-[10px]">
             {/* <Link
-              activeClass="active"
-              to="contact"
-              smooth={true}
-              offset={-63}
-              duration={500}
-              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
-            >
-              <span>Contact Us</span>
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link> */}
+      activeClass="active"
+      to="contact"
+      smooth={true}
+      offset={-63}
+      duration={500}
+      className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+    >
+      <span>Contact Us</span>
+      <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
+    </Link> */}
             <Dropdown>
               <Dropdown.Button light color={textColor}>
                 <div className="cursor-point font-semibold text-md sm:text-sm lg:text-lg relative group ">
@@ -214,13 +214,13 @@ const Navbar = () => {
             </Dropdown>
           </li>
           <li className="p-4">
-            <div
+            <span
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
               onClick={goToMember}
             >
               <span>Members</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
-            </div>
+            </span>
           </li>
         </ul>
 
@@ -241,10 +241,10 @@ const Navbar = () => {
               : "sm:hidden absolute top-0 left-[100%] right-0 bottom-0 flex items-start text-justify w-full h-screen bg-white text-black  ease-in duration-300"
           }
         >
-          <ul className="my-14 px-5 border-t-2 border-b-2">
+          <ul className="my-14 px-5 border-t-2 border-b-2 font-sansSerif">
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
             >
               <Link
                 activeClass="active"
@@ -258,7 +258,7 @@ const Navbar = () => {
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
             >
               <Link
                 activeClass="active"
@@ -272,7 +272,7 @@ const Navbar = () => {
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
             >
               <Link
                 activeClass="active"
@@ -286,7 +286,7 @@ const Navbar = () => {
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
             >
               <Link
                 activeClass="active"
@@ -300,7 +300,7 @@ const Navbar = () => {
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500 cursor-pointer"
+              className="text-md font-bold hover:text-gray-500 cursor-pointer"
             >
               <Link
                 activeClass="active"
@@ -309,12 +309,61 @@ const Navbar = () => {
                 offset={-63}
                 duration={500}
               >
-                Contact Us
+                <Dropdown css={{ padding: 0 }}>
+                  <Dropdown.Button
+                    light
+                    color={textColor}
+                    css={{ paddingLeft: 16, fontWeight: "$bold" }}
+                  >
+                    <span className=" text-lg ">Info</span>
+                  </Dropdown.Button>
+                  <Dropdown.Menu
+                    aria-label="Static Actions"
+                    css={{ minWidth: "max-content" }}
+                  >
+                    <Dropdown.Item key="new">
+                      <Link
+                        activeClass="active"
+                        to="contact"
+                        smooth={true}
+                        offset={-63}
+                        duration={500}
+                        className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                      >
+                        <span>Our Location</span>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item key="copy">
+                      <Link
+                        activeClass="active"
+                        to="contact"
+                        smooth={true}
+                        offset={-63}
+                        duration={500}
+                        className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                      >
+                        <span>Contact Us</span>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item key="edit">
+                      <Link
+                        activeClass="active"
+                        to="contact"
+                        smooth={true}
+                        offset={-63}
+                        duration={500}
+                        className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                      >
+                        <span>FAQ</span>
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Link>
             </li>
             <li
               onClick={handleNav}
-              className="p-4 text-1xl font-bold hover:text-gray-500"
+              className="p-4 text-lg font-bold hover:text-gray-500"
             >
               <div onClick={goToMember}>Members</div>
             </li>

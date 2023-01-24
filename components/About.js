@@ -19,7 +19,7 @@ export default function About() {
 
   return (
     <div id="about" className=" h-screen w-full bg-[#c4cacbcd] text-black ">
-      <div className=" h-full bg-[#c4cacb] grid grid-rows-2 p-8 lg:mx-52">
+      <div className=" h-full bg-[#c4cacb] grid grid-rows-2 p-8 lg:mx-52 xl:mx-64">
         <div className="text-center">
           <motion.h1
             ref={ref}

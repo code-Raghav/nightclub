@@ -36,7 +36,9 @@ export default function Hero({ heading, message }) {
           }}
         >
           <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-5rem]">
-            <p className=" py-5 text-md sm:text-md xl:text-xl">{message}</p>
+            <p className=" py-5 text-md sm:text-md md:text-lg xl:text-xl">
+              {message}
+            </p>
             <Link
               activeClass="active"
               to="home"
@@ -45,7 +47,7 @@ export default function Hero({ heading, message }) {
               duration={500}
               className="cursor-pointer"
             >
-              <h2 className="text-6xl font-black font-sansSerif sm:text-6xl sm:max-w-xs md:text-7xl md:max-w-sm lg:text-8xl lg:max-w-md hover:scale-110 ">
+              <h2 className="text-6xl font-black font-sansSerif sm:text-7xl sm:max-w-xs md:text-8xl md:max-w-md lg:text-8xl lg:max-w-md hover:scale-110 ">
                 {heading}
               </h2>
             </Link>

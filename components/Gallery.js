@@ -11,7 +11,7 @@ const cardsVariants = {
 export default function Gallery() {
   return (
     <div id="gallery" className=" w-full bg-[#c4cacb]">
-      <div className="grid bg-[#c4cacb] gap-8 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:mx-28 lg:mx-52 ">
+      <div className="grid bg-[#c4cacb] gap-8 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 xl:mx-64 md:mx-28 lg:mx-52 ">
         <ImageBox img="https://images.unsplash.com/photo-1618455495538-78e47b742be4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         <ImageBox img="https://images.unsplash.com/photo-1569924995012-c4c706bfcd51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         <ImageBox img="https://images.unsplash.com/photo-1622743941533-cde694bff56a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />

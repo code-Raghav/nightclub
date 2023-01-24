@@ -7,6 +7,7 @@ import Contact from "components/Contact";
 import About from "components/About";
 import Booking from "components/Booking";
 import Footer from "components/Footer";
+import Location from "components/Location";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
       <Hero heading="JOIN THE CLUB" message="WELCOME TO THE PARTY" />
       <About />
       <Gallery />
-
+      <Location />
       <Booking />
       <Contact></Contact>
       <Footer />
