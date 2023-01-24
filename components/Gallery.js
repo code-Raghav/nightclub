@@ -1,10 +1,17 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useAnimation, motion } from "framer-motion";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
+const cardsVariants = {
+  visible: { opacity: 1, scale: 1, transition: { duration: 1 } },
+  hidden: { opacity: 0, scale: 0 },
+};
 
 export default function Gallery() {
   return (
     <div id="gallery" className=" w-full bg-[#c4cacb]">
-      <div className="grid bg-[#c4cacb] gap-8 p-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:mx-52 ">
+      <div className="grid bg-[#c4cacb] gap-8 p-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 md:mx-28 lg:mx-52 ">
         <ImageBox img="https://images.unsplash.com/photo-1618455495538-78e47b742be4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         <ImageBox img="https://images.unsplash.com/photo-1569924995012-c4c706bfcd51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
         <ImageBox img="https://images.unsplash.com/photo-1622743941533-cde694bff56a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" />
@@ -19,14 +26,21 @@ export default function Gallery() {
 }
 
 function ImageBox({ img }) {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
     <motion.div
       className="flex justify-center relative group overflow-hidden rounded-md cursor-pointer"
-      initial={{ y: 25, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{
-        duration: 0.1,
-      }}
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      variants={cardsVariants}
     >
       <Image
         src={img}

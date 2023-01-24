@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Transition } from "@headlessui/react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { RiMenu4Line } from "react-icons/ri";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import CustomLink from "./CustomLink";
+
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { Dropdown } from "@nextui-org/react";
 
 const Navbar = () => {
   //standard nav code
@@ -55,6 +58,12 @@ const Navbar = () => {
     };
   }, [nav]);
 
+  const router = useRouter();
+  const goToMember = (e) => {
+    e.preventDefault();
+    router.push("/Members");
+  };
+
   return (
     <motion.div
       initial={{ y: 25, opacity: 0 }}
@@ -72,7 +81,7 @@ const Navbar = () => {
           activeClass="active"
           to="home"
           smooth={true}
-          offset={50}
+          offset={0}
           duration={500}
           className=" md:pl-10"
         >
@@ -82,7 +91,13 @@ const Navbar = () => {
           >
             BROOKLYN
           </h1> */}
-          <Image src={logo} width={100} height={50} />
+          <Image
+            src={logo}
+            width={100}
+            height={50}
+            styles="height: 'auto'"
+            alt="BROOKLYN"
+          />
         </Link>
         <ul style={{ color: `${textColor}` }} className={`hidden sm:flex`}>
           <li className="p-4">
@@ -100,7 +115,11 @@ const Navbar = () => {
           </li>
           <li className="p-4">
             <Link
-              to="/"
+              activeClass="active"
+              to="about"
+              smooth={true}
+              offset={-63}
+              duration={500}
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
               <span>Our Story</span>
@@ -122,27 +141,86 @@ const Navbar = () => {
           </li>
           <li className="p-4">
             <Link
-              to="/"
+              activeClass="active"
+              to="booking"
+              smooth={true}
+              offset={-63}
+              duration={500}
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
               <span>Booking</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
-          <li className="p-4">
-            <Link
-              href="/"
+          <li className="p-2 pt-[10px]">
+            {/* <Link
+              activeClass="active"
+              to="contact"
+              smooth={true}
+              offset={-63}
+              duration={500}
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
               <span>Contact Us</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
-            </Link>
+            </Link> */}
+            <Dropdown>
+              <Dropdown.Button light color={textColor}>
+                <div className="cursor-point font-semibold text-md sm:text-sm lg:text-lg relative group ">
+                  Info
+                </div>
+              </Dropdown.Button>
+              <Dropdown.Menu
+                aria-label="Static Actions"
+                css={{ minWidth: "max-content" }}
+              >
+                <Dropdown.Item key="new">
+                  <Link
+                    activeClass="active"
+                    to="contact"
+                    smooth={true}
+                    offset={-63}
+                    duration={500}
+                    className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                  >
+                    <span>Our Location</span>
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item key="copy">
+                  <Link
+                    activeClass="active"
+                    to="contact"
+                    smooth={true}
+                    offset={-63}
+                    duration={500}
+                    className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                  >
+                    <span>Contact Us</span>
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item key="edit">
+                  <Link
+                    activeClass="active"
+                    to="contact"
+                    smooth={true}
+                    offset={-63}
+                    duration={500}
+                    className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+                  >
+                    <span>FAQ</span>
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </li>
           <li className="p-4">
-            <CustomLink className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group ">
+            <div
+              className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
+              onClick={goToMember}
+            >
               <span>Members</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
-            </CustomLink>
+            </div>
           </li>
         </ul>
 
@@ -151,7 +229,7 @@ const Navbar = () => {
           {nav ? (
             <AiOutlineClose size={20} style={{ color: `${"black"}` }} />
           ) : (
-            <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
+            <AiOutlineMenu size={24} style={{ color: `${textColor}` }} />
           )}
         </div>
         {/* Mobile Menu */}
@@ -184,9 +262,9 @@ const Navbar = () => {
             >
               <Link
                 activeClass="active"
-                to="home"
+                to="about"
                 smooth={true}
-                offset={0}
+                offset={-63}
                 duration={500}
               >
                 Our Story
@@ -200,7 +278,7 @@ const Navbar = () => {
                 activeClass="active"
                 to="gallery"
                 smooth={true}
-                offset={0}
+                offset={-63}
                 duration={500}
               >
                 Media
@@ -212,9 +290,9 @@ const Navbar = () => {
             >
               <Link
                 activeClass="active"
-                to="home"
+                to="booking"
                 smooth={true}
-                offset={0}
+                offset={-63}
                 duration={500}
               >
                 Booking
@@ -226,9 +304,9 @@ const Navbar = () => {
             >
               <Link
                 activeClass="active"
-                to="home"
+                to="contact"
                 smooth={true}
-                offset={0}
+                offset={-63}
                 duration={500}
               >
                 Contact Us
@@ -238,7 +316,7 @@ const Navbar = () => {
               onClick={handleNav}
               className="p-4 text-1xl font-bold hover:text-gray-500"
             >
-              <CustomLink href="/contact">Members</CustomLink>
+              <div onClick={goToMember}>Members</div>
             </li>
           </ul>
         </div>

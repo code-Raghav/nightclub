@@ -3,6 +3,10 @@ import Gallery from "components/Gallery";
 import Hero from "components/Hero";
 import Navbar from "components/NavBar";
 import Head from "next/head";
+import Contact from "components/Contact";
+import About from "components/About";
+import Booking from "components/Booking";
+import Footer from "components/Footer";
 
 export default function Home() {
   return (
@@ -15,7 +19,12 @@ export default function Home() {
       </Head>
       <Navbar className=" sticky" />
       <Hero heading="JOIN THE CLUB" message="WELCOME TO THE PARTY" />
+      <About />
       <Gallery />
+
+      <Booking />
+      <Contact></Contact>
+      <Footer />
     </div>
   );
 }

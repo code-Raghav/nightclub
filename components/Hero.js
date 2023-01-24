@@ -29,14 +29,14 @@ export default function Hero({ heading, message }) {
         </video>
         <motion.div
           className="absolute inset-0 bg-black/70 z-[2] flex items-center justify-center md:left-[-20%] md:top-[-10%] lg:justify-start lg:left-0 lg:p-28"
-          initial={{ y: 25, opacity: 0 }}
+          initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 1,
           }}
         >
           <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-5rem]">
-            <p className=" py-5 text-sm sm:text-sm xl:text-xl">{message}</p>
+            <p className=" py-5 text-md sm:text-md xl:text-xl">{message}</p>
             <Link
               activeClass="active"
               to="home"
@@ -45,7 +45,7 @@ export default function Hero({ heading, message }) {
               duration={500}
               className="cursor-pointer"
             >
-              <h2 className="text-5xl font-bold font-sansSerif sm:text-6xl sm:max-w-xs md:text-7xl md:max-w-sm lg:text-8xl lg:max-w-md hover:scale-110 ">
+              <h2 className="text-6xl font-black font-sansSerif sm:text-6xl sm:max-w-xs md:text-7xl md:max-w-sm lg:text-8xl lg:max-w-md hover:scale-110 ">
                 {heading}
               </h2>
             </Link>
