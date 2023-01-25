@@ -7,9 +7,11 @@ import { useForm } from "react-hook-form";
 import { getAuth, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import Alert from "react-bootstrap/Alert";
 
 export default function Booking() {
   const todayDate = new Date();
+  console.log(todayDate.toLocaleString().substring(0, 16));
 
   //Setting up firebase and variables
   //required for name change
@@ -18,11 +20,6 @@ export default function Booking() {
   const { register, handleSubmit } = useForm();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [formName, setFormName] = useState("");
-  const [formPhone, setFormPhone] = useState("");
-  const [count, setCount] = useState("");
-  const [date, setDate] = useState("");
-  const [message, setMessage] = useState("");
 
   const updateDatabase = (data) => {
     //Update Name and Phone on database side
@@ -43,7 +40,9 @@ export default function Booking() {
         message: data.message,
       }
     );
-
+    alert(
+      "Successfully added to list, your reservation will be confirmed by a text message"
+    );
     console.log("Added to database!");
   };
 
@@ -125,12 +124,14 @@ export default function Booking() {
 
                     <div className="form-group">
                       <div className="form-input">
-                        <label htmlFor="count">Date</label>
+                        <label htmlFor="count">Date And Time</label>
                         <input
                           type="text"
                           name="date"
                           id="date"
-                          defaultValue={todayDate}
+                          defaultValue={todayDate
+                            .toLocaleString()
+                            .substring(0, 16)}
                           {...register("date", { required: true })}
                         ></input>
                       </div>
