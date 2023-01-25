@@ -95,33 +95,34 @@ export default function Booking() {
                           {...register("name", { required: true })}
                         />
                       </div>
+                      <div className="form-input">
+                        <label htmlFor="phone_number" className="required">
+                          Phone number
+                        </label>
+                        <input
+                          type="text"
+                          id="phone_number"
+                          defaultValue={user && phone ? phone : ""}
+                          {...register("phone", {
+                            required: true,
+                            minLength: 10,
+                            maxLength: 10,
+                          })}
+                        />
+                      </div>
+                      <div className="form-input">
+                        <label htmlFor="date" className="required">
+                          No. of People
+                        </label>
+                        <input
+                          type="text"
+                          id="date"
+                          defaultValue={"1"}
+                          {...register("count", { required: true })}
+                        />
+                      </div>
                     </div>
-                    <div className="form-input">
-                      <label htmlFor="phone_number" className="required">
-                        Phone number
-                      </label>
-                      <input
-                        type="text"
-                        id="phone_number"
-                        defaultValue={user && phone ? phone : ""}
-                        {...register("phone", {
-                          required: true,
-                          minLength: 10,
-                          maxLength: 10,
-                        })}
-                      />
-                    </div>
-                    <div className="form-input">
-                      <label htmlFor="date" className="required">
-                        No. of People
-                      </label>
-                      <input
-                        type="text"
-                        id="date"
-                        defaultValue={"1"}
-                        {...register("count", { required: true })}
-                      />
-                    </div>
+
                     <div className="form-group">
                       <div className="form-input">
                         <label htmlFor="count">Date</label>
