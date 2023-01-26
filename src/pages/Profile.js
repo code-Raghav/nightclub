@@ -73,7 +73,7 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavBarCustom back="/Members" />
+        <NavBarCustom back="/members" />
         <div className="flex h-screen items-center justify-center text-sm gap-5 ">
           <div>
             <div>Name: {user ? name : ""}</div>
