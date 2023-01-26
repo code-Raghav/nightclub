@@ -28,7 +28,7 @@ export default function Booking() {
 
   //Date for default in form
   const todayDate = new Date();
-  console.log(todayDate.toLocaleString().substring(0, 16));
+  console.log(todayDate.toLocaleDateString().substring(0, 16));
 
   //Setting up firebase and variables
   //required for name change
@@ -40,6 +40,8 @@ export default function Booking() {
 
   const updateDatabase = (data) => {
     //Update Name and Phone on database side
+    const formatDate = data.date.replace("/", "-").replace("/", "-");
+    console.log(formatDate);
 
     setDoc(
       doc(
@@ -47,7 +49,7 @@ export default function Booking() {
         "reservations",
         user
           ? "Member: " + data.phone + " " + data.date
-          : data.phone + " " + data.date
+          : data.phone + " " + formatDate
       ),
       {
         name: data.name,
