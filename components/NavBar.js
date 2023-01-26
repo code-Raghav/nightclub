@@ -131,11 +131,11 @@ const Navbar = () => {
               activeClass="active"
               to="gallery"
               smooth={true}
-              offset={-63}
+              offset={-68}
               duration={500}
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
-              <span>Media</span>
+              <span>Gallery</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
@@ -278,10 +278,10 @@ const Navbar = () => {
                 activeClass="active"
                 to="gallery"
                 smooth={true}
-                offset={-63}
+                offset={-68}
                 duration={500}
               >
-                Media
+                Gallery
               </Link>
             </li>
             <li

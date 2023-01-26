@@ -160,7 +160,7 @@ a {
 .container {
   width: 1400px;
   margin: 0 auto;
-  background: #fff;
+  background: #c3c9ca;
 }
 
 .signup-form {
@@ -239,6 +239,7 @@ input {
   -ms-border-radius: 5px;
   font-size: 14px;
   font-family: "Poppins";
+  color: #ebebeb;
 }
 input:focus {
   border: 1px solid #329e5e;
@@ -369,5 +370,18 @@ input:-webkit-autofill {
 
   .form-radio-group {
     flex-direction: column;
+  }
+}
+
+.parallaxImage {
+  background-image: url(/images/IMG_1131.jpg);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+  .parallaxImage {
+    background-color: black;
+    background-image: none;
   }
 }

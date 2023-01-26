@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         sansSerif: ["Poppins"],
       },
+      colors: {
+        bgblack: "#0E0E0E",
+      },
     },
   },
   plugins: [],

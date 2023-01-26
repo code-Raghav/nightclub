@@ -8,6 +8,7 @@ import About from "components/About";
 import Booking from "components/Booking";
 import Footer from "components/Footer";
 import Location from "components/Location";
+import ParallaxComp from "components/ParallaxComp";
 
 export default function Home() {
   return (
@@ -20,12 +21,14 @@ export default function Home() {
       </Head>
       <Navbar className=" sticky" />
       <Hero heading="JOIN THE CLUB" message="WELCOME TO THE PARTY" />
-      <About />
+
+      <ParallaxComp />
+      {/* <About /> */}
       <Gallery />
-      <Location />
+
       <Booking />
-      <Contact></Contact>
-      <Location />
+      {/* <Contact></Contact>
+      <Location /> */}
       <Footer />
     </div>
   );
