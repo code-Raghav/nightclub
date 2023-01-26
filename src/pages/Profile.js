@@ -60,7 +60,7 @@ export default function Profile() {
   useEffect(() => {
     readDatabase();
     if (!user) {
-      Router.replace("/Members");
+      Router.replace("/members");
     }
   }, [user]);
 
