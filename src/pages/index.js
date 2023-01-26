@@ -25,6 +25,7 @@ export default function Home() {
       <Location />
       <Booking />
       <Contact></Contact>
+      <Location />
       <Footer />
     </div>
   );

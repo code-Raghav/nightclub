@@ -124,14 +124,14 @@ export default function Booking() {
 
                     <div className="form-group">
                       <div className="form-input">
-                        <label htmlFor="count">Date And Time</label>
+                        <label htmlFor="count" className="required">
+                          Date
+                        </label>
                         <input
                           type="text"
                           name="date"
                           id="date"
-                          defaultValue={todayDate
-                            .toLocaleString()
-                            .substring(0, 16)}
+                          defaultValue={todayDate.toLocaleDateString()}
                           {...register("date", { required: true })}
                         ></input>
                       </div>
