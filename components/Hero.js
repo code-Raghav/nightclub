@@ -27,15 +27,15 @@ export default function Hero({ heading, message }) {
         >
           <source src="/bgHero.mp4" type="video/mp4" />
         </video>
-        <motion.div
-          className="absolute inset-0 bg-black/70 z-[2] flex items-center justify-center md:left-[-20%] md:top-[-10%] lg:justify-start lg:left-0 lg:p-28"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 1,
-          }}
-        >
-          <div className=" p-5 text-[#c4cacb] z-[2]  mt-[-5rem]">
+        <div className="absolute inset-0 bg-black/70 z-[2] flex items-center justify-center md:left-[-20%] md:top-[-10%] lg:justify-start lg:left-0 lg:p-28">
+          <motion.div
+            className=" p-5 text-[#c4cacb] z-[2]  mt-[-5rem]"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 1,
+            }}
+          >
             <p className=" py-5 text-md sm:text-md md:text-lg xl:text-xl">
               {message}
             </p>
@@ -51,8 +51,8 @@ export default function Hero({ heading, message }) {
                 {heading}
               </h2>
             </Link>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

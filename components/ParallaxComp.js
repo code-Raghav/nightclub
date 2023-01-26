@@ -64,7 +64,7 @@ export default function ParallaxComp() {
       </div>
       <div className="parallaxImage bg-fixed w-full h-[40vh] md:h-[50vh] text-black flex justify-center md:justify-end">
         <div className="w-full px-8 md:pr-0 xl:px-8  md:w-[60vw] bg-gradient-to-l  from-black via-black grid justify-center md:justify-end items-center overflow-hidden ">
-          <Parallax translateY={["250px", "-150px"]}>
+          <Parallax translateY={["200px", "-150px"]}>
             <div className="md:max-w-xs xl:max-w-lg flex items-end h-full">
               <h1 className=" text-white md:text-xl xl:text-3xl font-black font-sansSerif text-center ">
                 Experience life like never before. Have a crazy night with us!

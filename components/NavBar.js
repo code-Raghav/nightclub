@@ -122,7 +122,7 @@ const Navbar = () => {
               duration={500}
               className="cursor-pointer font-semibold text-md sm:text-sm lg:text-lg relative group "
             >
-              <span>Our Story</span>
+              <span>About</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-400 transition-all group-hover:w-full"></span>
             </Link>
           </li>
@@ -242,72 +242,62 @@ const Navbar = () => {
           }
         >
           <ul className="my-14 px-5 border-t-2 border-b-2 font-sansSerif">
-            <li
-              onClick={handleNav}
-              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
-            >
+            <li className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer">
               <Link
                 activeClass="active"
                 to="home"
                 smooth={true}
                 offset={0}
                 duration={500}
+                onClick={handleNav}
               >
                 Home
               </Link>
             </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
-            >
+            <li className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer">
               <Link
                 activeClass="active"
                 to="about"
                 smooth={true}
                 offset={-63}
                 duration={500}
+                onClick={handleNav}
               >
-                Our Story
+                About
               </Link>
             </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
-            >
+            <li className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer">
               <Link
                 activeClass="active"
                 to="gallery"
                 smooth={true}
                 offset={-68}
                 duration={500}
+                onClick={handleNav}
               >
                 Gallery
               </Link>
             </li>
-            <li
-              onClick={handleNav}
-              className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer"
-            >
+            <li className="p-4 text-lg font-bold hover:text-gray-500 cursor-pointer">
               <Link
                 activeClass="active"
                 to="booking"
                 smooth={true}
                 offset={-63}
                 duration={500}
+                onClick={handleNav}
               >
                 Booking
               </Link>
             </li>
-            <li
-              onClick={handleNav}
-              className="text-md font-bold hover:text-gray-500 cursor-pointer"
-            >
+            <li className="text-md font-bold hover:text-gray-500 cursor-pointer">
               <Link
                 activeClass="active"
                 to="contact"
                 smooth={true}
                 offset={-63}
                 duration={500}
+                onClick={handleNav}
               >
                 <Dropdown css={{ padding: 0 }}>
                   <Dropdown.Button

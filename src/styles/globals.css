@@ -379,7 +379,7 @@ input:-webkit-autofill {
   background-position: center;
   background-repeat: no-repeat;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .parallaxImage {
     background-color: black;
     background-image: none;
