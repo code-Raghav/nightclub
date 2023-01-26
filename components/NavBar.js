@@ -61,7 +61,7 @@ const Navbar = () => {
   const router = useRouter();
   const goToMember = (e) => {
     e.preventDefault();
-    router.push("/Members");
+    router.push("/members");
   };
 
   return (
